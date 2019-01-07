@@ -1,2 +1,2 @@
 # motion-lib
-Rust Motion Library.
+Motion Library in Go.
