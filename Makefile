@@ -9,9 +9,15 @@ TARGET = motion-lib
 build:
 	$(GOBUILD) -o $(TARGET) -v
 
+check:
+	$(GOBUILD) -v ./...
+
 clean:
 	$(GOCLEAN)
 	rm -f $(TARGET)
 
-run: build
+test:
+	$(GOTEST) -v ./...
+
+run:	check build
 	./$(TARGET)

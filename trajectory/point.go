@@ -11,7 +11,7 @@ type Point struct{
     Time float32
 }
 
-func (this Point) String() string{
+func (this *Point) String() string{
     //(time, position, velocity, acceleration)
     return fmt.Sprintf("(%.2f, %.2f, %.2f, %.2f)", this.Time, this.Acc, this.Vel, this.Pos)
 }
