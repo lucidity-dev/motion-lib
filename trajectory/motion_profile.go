@@ -6,25 +6,25 @@ import (
 )
 
 type MotionProfile struct{
-    points []Point
+    states []State
 }
 
 func (this *MotionProfile) Length() int {
-    return len(this.points)
+    return len(this.states)
 }
 
-func AddPoint(mp *MotionProfile, point *Point) {
-    mp.points = append(mp.points, *point)
+func AddState(mp *MotionProfile, state State) {
+    mp.states = append(mp.states, state)
 }
 
 func (this *MotionProfile) String() string{
     var buffer bytes.Buffer
 
-    buffer.WriteString(fmt.Sprintf("Total length: %d", this.Length()))
+    buffer.WriteString(fmt.Sprintf("Total length: %d\n", this.Length()))
     buffer.WriteString("(Time, Pos, Vel, Accel)\n")
 
-    for _, point  := range this.points{
-        buffer.WriteString(point.String())
+    for _, state := range this.states{
+        buffer.WriteString(state.String())
         buffer.WriteString("\n")
     }
 

@@ -4,14 +4,14 @@ import (
     "fmt"
 )
 
-type Point struct{
-    Pos float32
-    Vel float32
-    Acc float32
-    Time float32
+type State struct{
+    Pos float64
+    Vel float64
+    Acc float64
+    Time float64
 }
 
-func (this *Point) String() string{
+func (this *State) String() string{
     //(time, position, velocity, acceleration)
     return fmt.Sprintf("(%.2f, %.2f, %.2f, %.2f)", this.Time, this.Acc, this.Vel, this.Pos)
 }
