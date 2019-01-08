@@ -15,6 +15,7 @@ func (this *MotionProfile) Length() int {
 
 func AddPoint(mp *MotionProfile, point *Point) {
     mp.points = append(mp.points, *point)
+    mp.length += 1
 }
 
 func (this *MotionProfile) String() string{
