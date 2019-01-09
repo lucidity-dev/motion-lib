@@ -24,8 +24,8 @@ func GenerateProfile(config Config, initialState State, goal ProfileGoal) Motion
     cruiseVel := math.Min(clampedMaxVel, config.MaxVel)
     accTime := (cruiseVel - initialState.Vel)/config.Acc
     decTime := (cruiseVel - goal.Vel)/config.Acc
-    accDist := initialState.Vel*accTime + 0.5*config.Acc*accTime*accTime
-    decDist := cruiseVel*decTime - 0.5*config.Acc*accTime*accTime
+    accDist := (initialState.Vel + cruiseVel)/2.0*accTime
+    decDist := (cruiseVel + goal.Vel)/2.0*decTime
     cruiseDist := dist - accDist - decDist
     cruiseTime := cruiseDist/cruiseVel
     totalTime := accTime + cruiseTime + decTime
@@ -44,10 +44,12 @@ func GenerateProfile(config Config, initialState State, goal ProfileGoal) Motion
             currVel = cruiseVel
             currAcc = 0.0
         } else {
-            tmpCurrTime := totalTime - currTime
-            tmpCurrPos := 0.5*config.Acc*tmpCurrTime*tmpCurrTime
-            currPos = goal.Pos - tmpCurrPos
-            currVel = cruiseVel - config.Acc*tmpCurrTime
+            revCurrTime := totalTime - currTime
+            relCurrTime := currTime - accTime - cruiseTime
+            relCurrPos := goal.Vel*revCurrTime + 0.5*config.Acc*revCurrTime*revCurrTime
+
+            currPos = goal.Pos - relCurrPos
+            currVel = cruiseVel - config.Acc*relCurrTime
             currAcc = -config.Acc
         }
 
