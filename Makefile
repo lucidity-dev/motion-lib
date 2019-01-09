@@ -16,7 +16,7 @@ check:
 
 clean:
 	$(GOCLEAN)
-	rm -f $(TARGET)
+	rm -f $(TARGET) *.jpg
 
 test:
 	$(GOTEST) -v ./test
