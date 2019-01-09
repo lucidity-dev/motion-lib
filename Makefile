@@ -6,6 +6,8 @@ GOGET = $(GOCMD) get
 
 TARGET = motion-lib
 
+.PHONY: test
+
 build:
 	$(GOBUILD) -o $(TARGET) -v
 
@@ -17,7 +19,7 @@ clean:
 	rm -f $(TARGET)
 
 test:
-	$(GOTEST) -v ./...
+	$(GOTEST) -v ./test
 
 run:	check build
 	./$(TARGET)

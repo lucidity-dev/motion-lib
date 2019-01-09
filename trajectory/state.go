@@ -13,5 +13,5 @@ type State struct{
 
 func (this *State) String() string{
     //(time, position, velocity, acceleration)
-    return fmt.Sprintf("(%.2f, %.2f, %.2f, %.2f)", this.Time, this.Acc, this.Vel, this.Pos)
+    return fmt.Sprintf("(%.2f, %.2f, %.2f, %.2f)", this.Time, this.Pos, this.Vel, this.Acc)
 }
