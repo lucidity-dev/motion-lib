@@ -42,7 +42,7 @@ func (this *MotionProfile) Plot() {
     }
     p.Title.Text = "Motion Profile"
     p.X.Label.Text = "Time"
-    p.X.Label.Text = "Position, Velocity, Acceleration"
+    p.Y.Label.Text = "Position, Velocity, Acceleration"
 
     posPoints := make(plotter.XYs, this.Length())
     velPoints := make(plotter.XYs, this.Length())
