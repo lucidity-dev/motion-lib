@@ -47,7 +47,9 @@ func GenerateCubicSpline(start Point, end Point) CubicSpline {
 func GetPoint(this* CubicSpline, time float64) Point {
     x := this.Ax*math.Pow(time, 3) + this.Bx*math.Pow(time, 2) + this.Cx*time + this.Dx
     y := this.Ay*math.Pow(time, 3) + this.By*math.Pow(time, 2) + this.Cy*time + this.Dy
-    theta := math.Atan2(y, x)
+    dx := 3.0*this.Ax*math.Pow(time, 2) + 2.0*this.Bx*time + this.Cx;
+    dy := 3.0*this.Ay*math.Pow(time, 2) + 2.0*this.By*time + this.Cy;
+    theta := math.Atan2(dy, dx)
     return Point{x,y,theta}
 }
 
