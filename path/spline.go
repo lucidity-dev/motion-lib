@@ -44,7 +44,7 @@ func GenerateCubicSpline(start Point, end Point) CubicSpline {
 }
 
 //time ranges from 0 to 1
-func GetPoint(this* CubicSpline, time float64) Point {
+func (this* CubicSpline) GetPoint(time float64) Point {
     x := this.Ax*math.Pow(time, 3) + this.Bx*math.Pow(time, 2) + this.Cx*time + this.Dx
     y := this.Ay*math.Pow(time, 3) + this.By*math.Pow(time, 2) + this.Cy*time + this.Dy
     dx := 3.0*this.Ax*math.Pow(time, 2) + 2.0*this.Bx*time + this.Cx;
@@ -72,7 +72,7 @@ func (this *CubicSpline) Plot() {
 
     accum := 0.0
     for i := 0; i < iters; i += 1 {
-        p := GetPoint(this, accum)
+        p := this.GetPoint(accum)
         points[i].X = p.X
         points[i].Y = p.Y
         accum += step

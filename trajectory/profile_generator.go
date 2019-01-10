@@ -54,7 +54,7 @@ func GenerateProfile(config Config, initialState State, goal ProfileGoal) Motion
         }
 
         s := State{currPos, currVel, currAcc, currTime}
-        AddState(&rv, s)
+        rv.AddState(s)
         currTime += config.Dt
     }
 

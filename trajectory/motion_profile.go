@@ -17,8 +17,8 @@ func (this *MotionProfile) Length() int {
     return len(this.states)
 }
 
-func AddState(mp *MotionProfile, state State) {
-    mp.states = append(mp.states, state)
+func (this *MotionProfile) AddState(state State) {
+    this.states = append(this.states, state)
 }
 
 func (this *MotionProfile) String() string{
