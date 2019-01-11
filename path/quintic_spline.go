@@ -59,6 +59,6 @@ func (this* QuinticSpline) GetCurvature(t float64) float64 {
 }
 
 func (this *QuinticSpline) String() string {
-    return fmt.Sprintf("x(t) = %.2ft^5 + %.2ft^4 + %.2ft^3 + %.2ft^2 + %.2ft + %.2\ny(t) = %.2ft^5 + %.2ft^4 + %.2ft^3 + %.2ft^2 + %.2ft + %.2f", 
+    return fmt.Sprintf("x(t) = %.2ft^5 + %.2ft^4 + %.2ft^3 + %.2ft^2 + %.2ft + %.2f\ny(t) = %.2ft^5 + %.2ft^4 + %.2ft^3 + %.2ft^2 + %.2ft + %.2f", 
     this.Ax, this.Bx, this.Cx, this.Dx, this.Ex, this.Fx, this.Ay, this.By, this.Cy, this.Dy, this.Ey, this.Fy)
 }
