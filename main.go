@@ -25,11 +25,13 @@ func main(){
     profile.Plot()
     */
 
-    start := path.Pose{0,0,math.Pi/2.0}
-    end := path.Pose{20,100,math.Pi/2.0}
-    spline := path.GenerateQuinticSpline(start, end)
+    a := path.Pose{20,-95,0}
+    b := path.Pose{225,-95,15.0*math.Pi/180.0}
+    c := path.Pose{225,50,90.0}
+    spline1 := path.GenerateQuinticSpline(a, b)
+    spline2 := path.GenerateQuinticSpline(b, c)
 
-    fmt.Println(spline)
+    splines := []path.Spline{spline1, spline2}
 
-    path.Plot(spline, "", "QuinticSpline.jpg")
+    path.PlotSplines(splines, "", "Splines.jpg")
 }
