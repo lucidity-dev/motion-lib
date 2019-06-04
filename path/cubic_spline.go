@@ -10,7 +10,8 @@ type CubicSpline struct {
     //Spline coefficients
     //x(t) = Ax*t^3 + Bx*t^2 + Cx*t + Dx
     //y(t) = Ay*t^3 + By*t^2 + Cy*t + Dy
-    Ax,Bx,Cx,Dx,Ay,By,Cy,Dy float64
+    Ax, Bx, Cx, Dx float64
+    Ay, By, Cy, Dy float64
 }
 
 func GenerateCubicSpline(start Pose, end Pose) *CubicSpline {
@@ -25,10 +26,10 @@ func GenerateCubicSpline(start Pose, end Pose) *CubicSpline {
     vy1 := scale*Sin(end)
 
     //spline coeffs
-    ax := -2.0*x1 + 2.0*x0 + vx0 + vx1
-    ay := -2.0*y1 + 2.0*y0 + vy0 + vy1
-    bx := 3.0*x1 - 3.0*x0 - 2.0*vx0 - vx1
-    by := 3.0*y1 - 3.0*y0 - 2.0*vy0 - vy1
+    ax := CubicA_Pos1*x1 + CubicA_Pos0*x0 + vx0 + vx1
+    ay := CubicA_Pos1*y1 + CubicA_Pos0*y0 + vy0 + vy1
+    bx := CubicB_Pos1*x1 + CubicB_Pos0*x0 + CubicB_Vel0*vx0 - vx1
+    by := CubicB_Pos1*y1 + CubicB_Pos0*y0 + CubicB_Vel0*vy0 - vy1
     cx := vx0
     cy := vy0
     dx := x0

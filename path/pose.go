@@ -5,6 +5,10 @@ import (
     "math"
 )
 
+/*
+struct representing a Pose (position + heading in a 2D plane).
+X and Y are unitless, but Theta has to be in radians.
+*/
 type Pose struct {
     X, Y, Theta float64
 }

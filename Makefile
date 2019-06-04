@@ -22,7 +22,7 @@ test:
 	$(GOTEST) -v ./test
 
 deps:
-	$(GOGET) -u gonum.org/v1/plot/...
+	$(GOGET) gonum.org/v1/plot/...
 
 run:	check build
 	./$(TARGET)

@@ -27,14 +27,14 @@ func GenerateQuinticSpline(start Pose, end Pose) *QuinticSpline {
     ax1 := 0.0
     ay1 := 0.0
 
-    ax := -6.0*x0 + -3.0*vx0 - 0.5*ax0 + 0.5*ax1 - 3.0*vx1 + 6.0*x1
-    ay := -6.0*y0 + -3.0*vy0 - 0.5*ay0 + 0.5*ay1 - 3.0*vy1 + 6.0*y1
-    bx := 15.0*x0 + 8.0*vx0 + 1.5*ax0 - 1.0*ax1 + 7.0*vx1 - 15.0*x1
-    by := 15.0*y0 + 8.0*vy0 + 1.5*ay0 - 1.0*ay1 + 7.0*vy1 - 15.0*y1
-    cx := -10.0*x0 - 6.0*vx0 - 1.5*ax0 + 0.5*ax1 - 4.0*vx1 + 10.0*x1
-    cy := -10.0*y0 - 6.0*vy0 - 1.5*ay0 + 0.5*ay1 - 4.0*vy1 + 10.0*y1
-    dx := 0.5*ax0
-    dy := 0.5*ay0
+    ax := QuinticA_Pos0*x0 + QuinticA_Vel0*vx0 + QuinticA_Acc0*ax0 + QuinticA_Acc1*ax1 + QuinticA_Vel1*vx1 + QuinticA_Pos1*x1
+    ay := QuinticA_Pos0*y0 + QuinticA_Vel0*vy0 + QuinticA_Acc0*ay0 + QuinticA_Acc1*ay1 + QuinticA_Vel1*vy1 + QuinticA_Pos1*y1
+    bx := QuinticB_Pos0*x0 + QuinticB_Vel0*vx0 + QuinticB_Acc0*ax0 + QuinticB_Acc1*ax1 + QuinticB_Vel1*vx1 + QuinticB_Pos1*x1
+    by := QuinticB_Pos0*y0 + QuinticB_Vel0*vy0 + QuinticB_Acc0*ay0 + QuinticB_Acc1*ay1 + QuinticB_Vel1*vy1 + QuinticB_Pos1*y1
+    cx := QuinticC_Pos0*x0 + QuinticC_Vel0*vx0 + QuinticC_Acc0*ax0 + QuinticC_Acc1*ax1 + QuinticC_Vel1*vx1 + QuinticC_Pos1*x1
+    cy := QuinticC_Pos0*y0 + QuinticC_Vel0*vy0 + QuinticC_Acc0*ay0 + QuinticC_Acc1*ay1 + QuinticC_Vel1*vy1 + QuinticC_Pos1*y1
+    dx := QuinticD_Acc0*ax0
+    dy := QuinticD_Acc0*ay0
     ex := vx0
     ey := vy0
     fx := x0
@@ -59,6 +59,6 @@ func (this* QuinticSpline) GetCurvature(t float64) float64 {
 }
 
 func (this *QuinticSpline) String() string {
-    return fmt.Sprintf("x(t) = %.2ft^5 + %.2ft^4 + %.2ft^3 + %.2ft^2 + %.2ft + %.2f\ny(t) = %.2ft^5 + %.2ft^4 + %.2ft^3 + %.2ft^2 + %.2ft + %.2f", 
+    return fmt.Sprintf("x(t) = %.2ft^5 + %.2ft^4 + %.2ft^3 + %.2ft^2 + %.2ft + %.2f\ny(t) = %.2ft^5 + %.2ft^4 + %.2ft^3 + %.2ft^2 + %.2ft + %.2f",
     this.Ax, this.Bx, this.Cx, this.Dx, this.Ex, this.Fx, this.Ay, this.By, this.Cy, this.Dy, this.Ey, this.Fy)
 }
