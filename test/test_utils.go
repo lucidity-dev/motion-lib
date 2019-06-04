@@ -1,17 +1,17 @@
-package test;
+package test
 
 import (
-    "testing"
+	"testing"
 )
 
 func assertEqual(t *testing.T, a interface{}, b interface{}) {
-    if a != b {
-	t.Fatalf("%s != %s", a, b)
-    }
+	if a != b {
+		t.Fatalf("%s != %s", a, b)
+	}
 }
 
 func assertNotEqual(t *testing.T, a interface{}, b interface{}) {
-    if a == b {
-	t.Fatalf("%s != %s", a, b)
-    }
+	if a == b {
+		t.Fatalf("%s != %s", a, b)
+	}
 }
