@@ -3,6 +3,7 @@ GOBUILD = $(GOCMD) build
 GOCLEAN = $(GOCMD) clean
 GOTEST = $(GOCMD) test
 GOGET = $(GOCMD) get
+GOFMT = $(GOCMD) fmt
 
 TARGET = motion-lib
 
@@ -21,8 +22,11 @@ clean:
 test:
 	$(GOTEST) -v ./test
 
+format:
+	$(GOFMT) ./...
+
 deps:
-	$(GOGET) -u gonum.org/v1/plot/...
+	$(GOGET) gonum.org/v1/plot/...
 
 run:	check build
 	./$(TARGET)
